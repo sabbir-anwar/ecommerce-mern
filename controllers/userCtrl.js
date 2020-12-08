@@ -50,8 +50,8 @@ const userCtrl = {
       if(!isMatch) return res.status(400).json({msg: "Incorrect Password"})
 
       // if login success, create access token amd refresh token
-      const accessToken = createAccessToken({id: newUser._id})
-      const refreshToken = createRefreshToken({id: newUser._id})
+      const accessToken = createAccessToken({id: user._id})
+      const refreshToken = createRefreshToken({id: user._id})
 
       res.cookie('refreshToken', refreshToken, {
         httpOnly: true,
