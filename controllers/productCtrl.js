@@ -48,19 +48,21 @@ class APIfeatures{
 }
 
 const productCtrl = {
-  getProduct: async (req, res) => {
+  getProducts: async(req, res) =>{
     try {
-      const features = new APIfeatures(Products.find(), req.query).filtering().sorting().paginating()
+        const features = new APIfeatures(Products.find(), req.query)
+        .filtering().sorting().paginating()
 
-      const products = await features.query
+        const products = await features.query
 
-      res.json({
-        status: 'success',
-        result: products.length,
-        products: products
-      })
+        res.json({
+            status: 'success',
+            result: products.length,
+            products: products
+        })
+        
     } catch (err) {
-      return res.status(500).json({msg: err.message})
+        return res.status(500).json({msg: err.message})
     }
   },
   createProduct: async (req, res) => {
